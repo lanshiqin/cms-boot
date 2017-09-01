@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>登录</title>
+    <!-- 引入iView样式 -->
+    <link rel="stylesheet" th:href="@{/dist/styles/iview.css}"/>
+    <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+        .login-form {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="login-form" class="login-form">
+    <i-form ref="formInline" :model="formInline" :rules="ruleInline">
+        <Form-item prop="user">
+            <i-input type="text" v-model="formInline.user" placeholder="Username">
+                <Icon type="ios-person-outline" slot="prepend"></Icon>
+            </i-input>
+        </Form-item>
+        <Form-item prop="password">
+            <i-input type="password" v-model="formInline.password" placeholder="Password">
+                <Icon type="ios-locked-outline" slot="prepend"></Icon>
+            </i-input>
+        </Form-item>
+        <Form-item>
+            <i-button type="primary" @click="handleSubmit('formInline')">登录</i-button>
+        </Form-item>
+    </i-form>
+</div>
+
+
+<!-- 引入Vue.js -->
+<script th:src="@{/js/vue.js}"></script>
+<!-- 引入iView组件库 -->
+<script th:src="@{/dist/iview.min.js}"></script>
+<!-- 引入JQuery -->
+<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script>
+    const vm = new Vue({
+        el: '#login-form',
+        data() {
+            return {
+                formInline: {
+                    user: '',
+                    password: ''
+                },
+                ruleInline: {
+                    user: [
+                        {required: true, message: '请填写用户名', trigger: 'blur'}
+                    ],
+                    password: [
+                        {required: true, message: '请填写密码', trigger: 'blur'},
+                        {type: 'string', min: 6, message: '密码长度不能小于6位', trigger: 'blur'}
+                    ]
+                }
+            }
+        },
+        methods: {
+            handleSubmit(name) {
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/login.action',
+                            data: 'userName='+this.formInline.user+'&passWord='+this.formInline.password,
+                            success: function (data) {
+                                console.info(data);
+                                const obj = eval(data);
+                                vm.$Message.success(obj.message);
+                                if (obj.code=="200"){
+                                    location.href="http://localhost:9999/manage"
+                                }
+                            }
+                        });
+
+                    } else {
+                        this.$Message.error('表单验证失败!');
+                    }
+                })
+            }
+        }
+    });
+</script>
+</body>
+</html>

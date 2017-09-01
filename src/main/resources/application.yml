@@ -1,0 +1,12 @@
+#服务器配置
+server:
+  port: 9999
+
+spring:
+  #模板引擎配置
+  thymeleaf:
+    mode: LEGACYHTML5
+  #热编译设置
+  devtools:
+    restart:
+      enabled: false
