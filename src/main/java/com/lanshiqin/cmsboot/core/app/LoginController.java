@@ -2,8 +2,13 @@ package com.lanshiqin.cmsboot.core.app;
 
 import com.lanshiqin.cmsboot.core.api.JsonBaseController;
 import com.lanshiqin.cmsboot.core.bean.JsonDataBean;
+import com.lanshiqin.cmsboot.core.entity.SysLoginInfo;
+import com.lanshiqin.cmsboot.core.entity.SysUserInfo;
 import com.lanshiqin.cmsboot.core.filter.UserLoginFilter;
+import com.lanshiqin.cmsboot.core.service.SysLoginInfoService;
+import com.lanshiqin.cmsboot.core.service.SysUserInfoService;
 import com.lanshiqin.cmsboot.core.utils.ObjectUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +19,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class LoginController extends JsonBaseController {
+
+    @Autowired
+    private SysLoginInfoService sysLoginInfoService;    // 登录服务
+
+    @Autowired
+    private SysUserInfoService sysUserInfoService;      // 用户信息服务
 
     /**
      * 跳转到login登录页面
@@ -43,8 +54,25 @@ public class LoginController extends JsonBaseController {
             return getJsonDataBean("500","密码不能为空");
         }
 
-        if (userName.equals("admin")&&passWord.equals("admin123")){
-            return getJsonDataBean("200","登录成功","欢迎用户"+userName);
+        // 根据用户名查找用户信息
+        SysLoginInfo sysLoginInfo = sysLoginInfoService.findByUserName(userLoginFilter);
+
+        // 判断用户信息是否为空
+        if (ObjectUtils.isNotBlank(sysLoginInfo)){
+
+            // 对比用户的密码和数据库中的密码是否一致
+            if (passWord.equals(sysLoginInfo.getPassWord())){
+
+                // 根据用户id查找用户信息
+                SysUserInfo sysUserInfo = sysUserInfoService.findById(sysLoginInfo.getUserId());
+                if (ObjectUtils.isNotBlank(sysUserInfo)){
+                    return getJsonDataBean("200","登录成功",sysUserInfo);
+                }else{
+                    return getJsonDataBean("500","用户信息不存在","账号异常!");
+                }
+
+            }
+            return getJsonDataBean("500","用户名或密码错误");
         }
         return getJsonDataBean("500","用户名或密码错误");
     }

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lanshiqin.cmsboot.core.dao.SysLoginInfoDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.lanshiqin.cmsboot.core.entity.SysLoginInfo">
+        <result column="user_name" property="userName"/>
+        <result column="pass_word" property="passWord"/>
+        <result column="status" property="status"/>
+        <result column="sys_id" property="sysId"/>
+        <result column="create_date" property="createDate"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `user_name`,
+        `pass_word`,
+        `status`,
+        `sys_id`,
+        `create_date`,
+        `create_time`,
+        `create_user`,
+        `update_date`,
+        `update_time`,
+        `update_user`,
+        `user_id`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.sysId">
+        INSERT INTO sys_login_info (
+            `user_name`,
+            `pass_word`,
+            `status`,
+            `sys_id`,
+            `create_date`,
+            `create_time`,
+            `create_user`,
+            `update_date`,
+            `update_time`,
+            `update_user`,
+            `user_id`
+        ) VALUES (
+            #{pojo.userName},
+            #{pojo.passWord},
+            #{pojo.status},
+            #{pojo.sysId},
+            #{pojo.createDate},
+            #{pojo.createTime},
+            #{pojo.createUser},
+            #{pojo.updateDate},
+            #{pojo.updateTime},
+            #{pojo.updateUser},
+            #{pojo.userId}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.sysId">
+        INSERT INTO sys_login_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.userName!=null"> `user_name`,</if>
+            <if test="pojo.passWord!=null"> `pass_word`,</if>
+            <if test="pojo.status!=null"> `status`,</if>
+            <if test="pojo.sysId!=null"> `sys_id`,</if>
+            <if test="pojo.createDate!=null"> `create_date`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+            <if test="pojo.createUser!=null"> `create_user`,</if>
+            <if test="pojo.updateDate!=null"> `update_date`,</if>
+            <if test="pojo.updateTime!=null"> `update_time`,</if>
+            <if test="pojo.updateUser!=null"> `update_user`,</if>
+            <if test="pojo.userId!=null"> `user_id`</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.userName!=null"> #{pojo.userName},</if>
+            <if test="pojo.passWord!=null"> #{pojo.passWord},</if>
+            <if test="pojo.status!=null"> #{pojo.status},</if>
+            <if test="pojo.sysId!=null"> #{pojo.sysId},</if>
+            <if test="pojo.createDate!=null"> #{pojo.createDate},</if>
+            <if test="pojo.createTime!=null"> #{pojo.createTime},</if>
+            <if test="pojo.createUser!=null"> #{pojo.createUser},</if>
+            <if test="pojo.updateDate!=null"> #{pojo.updateDate},</if>
+            <if test="pojo.updateTime!=null"> #{pojo.updateTime},</if>
+            <if test="pojo.updateUser!=null"> #{pojo.updateUser},</if>
+            <if test="pojo.userId!=null"> #{pojo.userId}</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO sys_login_info(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.userName},
+            #{pojo.passWord},
+            #{pojo.status},
+            #{pojo.sysId},
+            #{pojo.createDate},
+            #{pojo.createTime},
+            #{pojo.createUser},
+            #{pojo.updateDate},
+            #{pojo.updateTime},
+            #{pojo.updateUser},
+            #{pojo.userId}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+
+        UPDATE sys_login_info
+        <set>
+            <if test="pojo.userName != null"> `user_name` = #{pojo.userName},</if>
+            <if test="pojo.passWord != null"> `pass_word` = #{pojo.passWord},</if>
+            <if test="pojo.status != null"> `status` = #{pojo.status},</if>
+            <if test="pojo.sysId != null"> `sys_id` = #{pojo.sysId},</if>
+            <if test="pojo.createDate != null"> `create_date` = #{pojo.createDate},</if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime},</if>
+            <if test="pojo.createUser != null"> `create_user` = #{pojo.createUser},</if>
+            <if test="pojo.updateDate != null"> `update_date` = #{pojo.updateDate},</if>
+            <if test="pojo.updateTime != null"> `update_time` = #{pojo.updateTime},</if>
+            <if test="pojo.updateUser != null"> `update_user` = #{pojo.updateUser},</if>
+            <if test="pojo.userId != null"> `user_id` = #{pojo.userId}</if>
+        </set>
+        WHERE sys_id = #{pojo.sysId}
+    </update>
+
+    <select id="findByUserName" resultMap="AllColumnMap" parameterType="com.lanshiqin.cmsboot.core.filter.UserLoginFilter">
+        SELECT * FROM sys_login_info
+        <where>
+            <if test="pojo.userName!=null">
+                sys_login_info.user_name = #{pojo.userName}
+            </if>
+        </where>
+    </select>
+</mapper>
+
