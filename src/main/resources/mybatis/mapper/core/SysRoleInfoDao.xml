@@ -116,5 +116,12 @@
         </set>
         WHERE sys_id = #{pojo.sysId}
     </update>
+
+    <select id="findByIn" resultMap="AllColumnMap" parameterType="String">
+        SELECT * FROM  sys_role_info WHERE sys_role_info.sys_id IN
+        <foreach item="item" index="index" collection="roleIdList" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 </mapper>
 

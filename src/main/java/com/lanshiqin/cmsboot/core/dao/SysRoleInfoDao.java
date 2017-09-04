@@ -15,4 +15,6 @@ public interface SysRoleInfoDao {
     int insertList(@Param("pojos") List<SysRoleInfo> pojo);
 
     int update(@Param("pojo") SysRoleInfo pojo);
+
+    List<SysRoleInfo> findByIn(@Param("roleIdList") List<String> roleIdList);
 }

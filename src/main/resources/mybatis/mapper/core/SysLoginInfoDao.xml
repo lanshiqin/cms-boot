@@ -134,11 +134,11 @@
         WHERE sys_id = #{pojo.sysId}
     </update>
 
-    <select id="findByUserName" resultMap="AllColumnMap" parameterType="com.lanshiqin.cmsboot.core.filter.UserLoginFilter">
+    <select id="findByUserName" resultMap="AllColumnMap" parameterType="String">
         SELECT * FROM sys_login_info
         <where>
-            <if test="pojo.userName!=null">
-                sys_login_info.user_name = #{pojo.userName}
+            <if test="userName!=null">
+                sys_login_info.user_name = #{userName}
             </if>
         </where>
     </select>

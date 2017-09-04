@@ -15,4 +15,6 @@ public interface SysUserRoleDao {
     int insertList(@Param("pojos") List<SysUserRole> pojo);
 
     int update(@Param("pojo") SysUserRole pojo);
+
+    List<SysUserRole> findByUserID(@Param("userId") Long userId);
 }

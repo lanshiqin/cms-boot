@@ -15,4 +15,6 @@ public interface SysRolePermissionDao {
     int insertList(@Param("pojos") List<SysRolePermission> pojo);
 
     int update(@Param("pojo") SysRolePermission pojo);
+
+    List<SysRolePermission> findByIn(@Param("roleIdList") List<String> roleIdList);
 }

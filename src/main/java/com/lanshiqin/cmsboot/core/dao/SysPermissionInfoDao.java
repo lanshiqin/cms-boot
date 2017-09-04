@@ -15,4 +15,6 @@ public interface SysPermissionInfoDao {
     int insertList(@Param("pojos") List<SysPermissionInfo> pojo);
 
     int update(@Param("pojo") SysPermissionInfo pojo);
+
+    List<SysPermissionInfo> findByIn(@Param("permissionIdList") List<String> permissionIdList);
 }

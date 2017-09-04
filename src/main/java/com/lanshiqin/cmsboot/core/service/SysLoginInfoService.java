@@ -29,7 +29,7 @@ public class SysLoginInfoService{
         return sysLoginInfoDao.update(pojo);
     }
 
-    public SysLoginInfo findByUserName(UserLoginFilter userLoginFilter) {
-        return sysLoginInfoDao.findByUserName(userLoginFilter);
+    public SysLoginInfo findByUserName(String userName) {
+        return sysLoginInfoDao.findByUserName(userName);
     }
 }

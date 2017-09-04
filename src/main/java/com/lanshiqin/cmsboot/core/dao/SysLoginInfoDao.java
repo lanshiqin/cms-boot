@@ -1,6 +1,5 @@
 package com.lanshiqin.cmsboot.core.dao;
 
-import com.lanshiqin.cmsboot.core.filter.UserLoginFilter;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,5 +16,5 @@ public interface SysLoginInfoDao {
 
     int update(@Param("pojo") SysLoginInfo pojo);
 
-    SysLoginInfo findByUserName(@Param("pojo") UserLoginFilter userLoginFilter);
+    SysLoginInfo findByUserName(@Param("userName") String userName);
 }

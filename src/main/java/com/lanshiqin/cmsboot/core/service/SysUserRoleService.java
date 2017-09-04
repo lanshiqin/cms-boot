@@ -27,4 +27,8 @@ public class SysUserRoleService{
     public int update(SysUserRole pojo){
         return sysUserRoleDao.update(pojo);
     }
+
+    public List<SysUserRole> findByUserID(Long userId) {
+        return sysUserRoleDao.findByUserID(userId);
+    }
 }

@@ -27,4 +27,8 @@ public class SysRoleInfoService{
     public int update(SysRoleInfo pojo){
         return sysRoleInfoDao.update(pojo);
     }
+
+    public List<SysRoleInfo> findByIn(List<String> roleIdList) {
+        return sysRoleInfoDao.findByIn(roleIdList);
+    }
 }

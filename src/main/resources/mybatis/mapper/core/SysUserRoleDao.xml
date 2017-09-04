@@ -116,5 +116,14 @@
         </set>
         WHERE sys_id = #{pojo.sysId}
     </update>
+
+    <select id="findByUserID" resultMap="AllColumnMap" parameterType="Long">
+        SELECT * FROM sys_user_role
+        <where>
+            <if test="userId!=null">
+                sys_user_role.user_id = #{userId}
+            </if>
+        </where>
+    </select>
 </mapper>
 

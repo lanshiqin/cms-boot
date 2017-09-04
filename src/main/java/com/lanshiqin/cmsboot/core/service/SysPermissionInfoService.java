@@ -27,4 +27,8 @@ public class SysPermissionInfoService{
     public int update(SysPermissionInfo pojo){
         return sysPermissionInfoDao.update(pojo);
     }
+
+    public List<SysPermissionInfo> findByIn(List<String> permissionIdList) {
+        return sysPermissionInfoDao.findByIn(permissionIdList);
+    }
 }

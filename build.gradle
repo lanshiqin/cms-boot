@@ -31,5 +31,6 @@ dependencies {
 	runtime('org.springframework.boot:spring-boot-devtools')
 	compile('net.sourceforge.nekohtml:nekohtml:1.9.22')
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+	compile 'org.apache.shiro:shiro-spring:1.4.0'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

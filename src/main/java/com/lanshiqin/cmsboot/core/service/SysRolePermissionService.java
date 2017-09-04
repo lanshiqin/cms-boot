@@ -27,4 +27,8 @@ public class SysRolePermissionService{
     public int update(SysRolePermission pojo){
         return sysRolePermissionDao.update(pojo);
     }
+
+    public List<SysRolePermission> findByIn(List<String> roleIdList) {
+        return sysRolePermissionDao.findByIn(roleIdList);
+    }
 }
