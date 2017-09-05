@@ -96,7 +96,7 @@
             <i-col :span="spanLeft" class="layout-menu-left">
                 <i-menu active-name="1-2" theme="dark" width="auto" :open-names="['1']" @on-select="itemSelectFunc">
                     <!--<div class="layout-logo-left"></div>-->
-                    <Submenu name="1">
+                    <Submenu name="1" v-if="isPermission('core:sys:article:manage')">
                         <template slot="title">
                             <Icon type="pricetag"></Icon>
                             <span class="layout-text">文章管理</span>
@@ -114,7 +114,7 @@
                             <span class="layout-text">分类目录</span>
                         </Menu-item>
                     </Submenu>
-                    <Submenu name="2">
+                    <Submenu name="2" v-if="isPermission('core:sys:user:manage')">
                         <template slot="title">
                             <Icon type="person"></Icon>
                             <span class="layout-text">用户管理</span>
@@ -132,11 +132,12 @@
                             <span class="layout-text">我的个人资料</span>
                         </Menu-item>
                     </Submenu>
-                    <Submenu name="3">
-                        <template slot="title">
-                            <Icon type="gear-a"></Icon>
-                            <span class="layout-text">设置</span>
-                        </template>
+                    <Submenu name="3" v-if="" v-if="isPermission('core:sys:setting')">
+                            <template slot="title">
+                                <Icon type="gear-a"></Icon>
+                                <span class="layout-text">设置</span>
+                            </template>
+
                         <Menu-item name="3-1">
                             <Icon type="ios-heart"></Icon>
                             <span class="layout-text">主题</span>
@@ -206,13 +207,17 @@
 <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
 
 <script>
-    new Vue({
+    var manage = new Vue({
         el: '#manage-layout',
         data() {
             return {
                 spanLeft: 5,
-                spanRight: 19
+                spanRight: 19,
+                permission: []
             }
+        },
+        mounted(){
+            this.loadPermission();
         },
         computed: {
             iconSize() {
@@ -231,6 +236,27 @@
             },
             itemSelectFunc(){
 
+            },
+            loadPermission(){   // 加载权限
+                $.ajax({
+                    type: 'POST',
+                    url: '/getRolePermission',
+                    data: null,
+                    success: function (data) {
+                        const obj = eval(data);
+                        if (obj.code=="200"){
+                            manage.permission=obj;
+                        }
+                    }
+                });
+            },
+            isPermission(obj){
+                console.info("obj: "+obj);
+                console.info("data: "+this.permission.data);
+                if (this.permission.data!==undefined){
+                    return this.permission.data.indexOf(obj) > -1;
+                }
+                return false;
             }
         }
     });

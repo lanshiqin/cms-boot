@@ -1,5 +1,6 @@
 package com.lanshiqin.cmsboot.core.security;
 
+import com.google.gson.Gson;
 import com.lanshiqin.cmsboot.core.entity.*;
 import com.lanshiqin.cmsboot.core.service.*;
 import com.lanshiqin.cmsboot.core.utils.ObjectUtils;
@@ -10,6 +11,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -38,6 +40,8 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
     @Autowired
     private SysPermissionInfoService sysPermissionInfoService;  // 权限信息服务
 
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;        // 缓存模板对象
     /**
      * 授权(权限认证）
      *
@@ -103,6 +107,9 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
             permissionSet.add(sysPermissionInfo.getFunc()); // 权限字符
         }
         info.setStringPermissions(permissionSet);
+
+        // 将用户认证信息存到redis中
+        redisTemplate.opsForValue().set(String.valueOf(userId),new Gson().toJson(info));
 
         return info;
     }
