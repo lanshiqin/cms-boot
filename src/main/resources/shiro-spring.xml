@@ -17,9 +17,9 @@
         <!--配置登录页面,不设置默认为Web工程下的login.jsp页面-->
         <property name="loginUrl" value="/login"/>
         <!--设置授权成功的页面-->
-        <property name="successUrl" value="/manage"/>
+        <property name="successUrl" value="/core/manage"/>
         <!--设置未授权的页面-->
-        <property name="unauthorizedUrl" value="/"/>
+        <property name="unauthorizedUrl" value="/core/noper"/>
 
         <!--配置拦截器 anon不需要认证 authc需要认证-->
         <property name="filterChainDefinitions">
@@ -54,8 +54,8 @@
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
-                <prop key="org.apache.shiro.authz.UnauthorizedException">index</prop>
-                <prop key="com.sirdc.modules.core.exceptions.ServiceException">index</prop>
+                <prop key="org.apache.shiro.authz.UnauthorizedException">core_noper_layout</prop>
+                <prop key="com.sirdc.modules.core.exceptions.ServiceException">core_noper_layout</prop>
             </props>
         </property>
     </bean>

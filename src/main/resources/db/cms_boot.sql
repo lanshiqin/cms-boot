@@ -24,6 +24,39 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `cms_boot` /*!40100 DEFAULT CHARACTER S
 USE `cms_boot`;
 
 --
+-- Table structure for table `sys_dep_info`
+--
+
+DROP TABLE IF EXISTS `sys_dep_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_dep_info` (
+  `name` varchar(255) NOT NULL DEFAULT '' COMMENT '部门名称',
+  `level` int(11) NOT NULL DEFAULT '-1' COMMENT '部门级别',
+  `relation` varchar(1000) NOT NULL DEFAULT '' COMMENT '部门关系',
+  `status` varchar(50) NOT NULL DEFAULT '' COMMENT ' 部门状态（1：正常，0：禁用）',
+  `sys_id` bigint(15) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `create_date` varchar(50) NOT NULL DEFAULT '' COMMENT '创建日期',
+  `create_time` varchar(50) NOT NULL DEFAULT '' COMMENT '创建时间',
+  `create_user` varchar(50) NOT NULL DEFAULT '' COMMENT '创建用户',
+  `update_date` varchar(50) NOT NULL DEFAULT '' COMMENT '更新日期',
+  `update_time` varchar(50) NOT NULL DEFAULT '' COMMENT '更新时间',
+  `update_user` varchar(50) NOT NULL DEFAULT '' COMMENT '更新用户',
+  PRIMARY KEY (`sys_id`),
+  UNIQUE KEY `sys_id` (`sys_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='`sys_dep_info`';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_dep_info`
+--
+
+LOCK TABLES `sys_dep_info` WRITE;
+/*!40000 ALTER TABLE `sys_dep_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sys_dep_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `sys_login_info`
 --
 
@@ -76,7 +109,7 @@ CREATE TABLE `sys_permission_info` (
   `update_user` varchar(50) NOT NULL DEFAULT '' COMMENT '更新用户',
   PRIMARY KEY (`sys_id`),
   UNIQUE KEY `sys_id` (`sys_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='`sys_permission_info`';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='`sys_permission_info`';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +118,7 @@ CREATE TABLE `sys_permission_info` (
 
 LOCK TABLES `sys_permission_info` WRITE;
 /*!40000 ALTER TABLE `sys_permission_info` DISABLE KEYS */;
-INSERT INTO `sys_permission_info` VALUES ('core:sys:manage','后台管理',1,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员');
+INSERT INTO `sys_permission_info` VALUES ('core:manage:layout','后台管理',1,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('core:sysinfo:layout','系统信息维护',2,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('core:userinfo:layout','用户信息维护',3,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('core:roleinfo:layout','角色信息维护',4,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('core:perinfo:layout','权限信息维护',5,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('core:depinfo:layout','部门信息维护',6,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员');
 /*!40000 ALTER TABLE `sys_permission_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,7 +173,7 @@ CREATE TABLE `sys_role_permission` (
   `update_user` varchar(50) NOT NULL DEFAULT '' COMMENT '更新用户',
   PRIMARY KEY (`sys_id`),
   UNIQUE KEY `sys_id` (`sys_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='`sys_role_permission`';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='`sys_role_permission`';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +182,7 @@ CREATE TABLE `sys_role_permission` (
 
 LOCK TABLES `sys_role_permission` WRITE;
 /*!40000 ALTER TABLE `sys_role_permission` DISABLE KEYS */;
-INSERT INTO `sys_role_permission` VALUES ('1','1',1,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员');
+INSERT INTO `sys_role_permission` VALUES ('1','1',1,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('1','2',2,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('1','3',3,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('1','4',4,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('1','5',5,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('1','6',6,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('1','7',7,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('1','8',8,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('1','9',9,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('1','10',10,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('1','11',11,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('1','12',12,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('1','13',13,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员');
 /*!40000 ALTER TABLE `sys_role_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,7 +206,7 @@ CREATE TABLE `sys_user_info` (
   `update_user` varchar(50) NOT NULL DEFAULT '' COMMENT '更新用户',
   PRIMARY KEY (`sys_id`),
   UNIQUE KEY `sys_id` (`sys_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='`sys_user_info`';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='`sys_user_info`';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -227,4 +260,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-04 22:21:08
+-- Dump completed on 2017-09-07 23:26:12
