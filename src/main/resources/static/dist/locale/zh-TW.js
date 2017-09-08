@@ -73,12 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/locale/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 13:
+/***/ 14:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90,24 +90,24 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     i: {
         select: {
-            placeholder: '请选择',
-            noMatch: '无匹配数据',
-            loading: '加载中'
+            placeholder: '請選擇',
+            noMatch: '無匹配數據',
+            loading: '加載中'
         },
         table: {
-            noDataText: '暂无数据',
-            noFilteredDataText: '暂无筛选结果',
-            confirmFilter: '筛选',
+            noDataText: '暫無數據',
+            noFilteredDataText: '暫無篩選結果',
+            confirmFilter: '篩選',
             resetFilter: '重置',
             clearFilter: '全部'
         },
         datepicker: {
-            selectDate: '选择日期',
-            selectTime: '选择时间',
-            startTime: '开始时间',
-            endTime: '结束时间',
+            selectDate: '選擇日期',
+            selectTime: '選擇時間',
+            startTime: '開始時間',
+            endTime: '結束時間',
             clear: '清空',
-            ok: '确定',
+            ok: '確定',
             month: '月',
             month1: '1 月',
             month2: '2 月',
@@ -151,35 +151,35 @@ exports.default = {
                 source: '源列表',
                 target: '目的列表'
             },
-            filterPlaceholder: '请输入搜索内容',
-            notFoundText: '列表为空'
+            filterPlaceholder: '請輸入搜索內容',
+            notFoundText: '列表爲空'
         },
         modal: {
-            okText: '确定',
+            okText: '確定',
             cancelText: '取消'
         },
         poptip: {
-            okText: '确定',
+            okText: '確定',
             cancelText: '取消'
         },
         page: {
-            prev: '上一页',
-            next: '下一页',
+            prev: '上壹頁',
+            next: '下壹頁',
             total: '共',
-            item: '条',
-            items: '条',
-            prev5: '向前 5 页',
-            next5: '向后 5 页',
-            page: '条/页',
+            item: '條',
+            items: '條',
+            prev5: '向前 5 頁',
+            next5: '向後 5 頁',
+            page: '條/頁',
             goto: '跳至',
-            p: '页'
+            p: '頁'
         },
         rate: {
             star: '星',
             stars: '星'
         },
         tree: {
-            emptyText: '暂无数据'
+            emptyText: '暫無數據'
         }
     }
 };

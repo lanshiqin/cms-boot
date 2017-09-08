@@ -1,5 +1,6 @@
 package com.lanshiqin.cmsboot.core.dao;
 
+import com.lanshiqin.cmsboot.core.filter.UserInfoFilter;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,4 +18,8 @@ public interface SysUserInfoDao {
     int update(@Param("pojo") SysUserInfo pojo);
 
     SysUserInfo findById(@Param("userId") Long userId);
+
+    List<SysUserInfo> search(@Param("pojo") UserInfoFilter userInfoFilter);
+
+    int delete(@Param("idList") List<String> idList);
 }

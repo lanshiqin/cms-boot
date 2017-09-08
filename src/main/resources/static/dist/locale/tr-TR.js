@@ -73,12 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/locale/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 13:
+/***/ 11:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90,96 +90,96 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     i: {
         select: {
-            placeholder: '请选择',
-            noMatch: '无匹配数据',
-            loading: '加载中'
+            placeholder: 'Seç',
+            noMatch: 'Eşleşen veri yok',
+            loading: 'yükleme'
         },
         table: {
-            noDataText: '暂无数据',
-            noFilteredDataText: '暂无筛选结果',
-            confirmFilter: '筛选',
-            resetFilter: '重置',
-            clearFilter: '全部'
+            noDataText: 'Veri Yok',
+            noFilteredDataText: 'Süzülen veri yok',
+            confirmFilter: 'Onayla',
+            resetFilter: 'Sıfırla',
+            clearFilter: 'Hepsi'
         },
         datepicker: {
-            selectDate: '选择日期',
-            selectTime: '选择时间',
-            startTime: '开始时间',
-            endTime: '结束时间',
-            clear: '清空',
-            ok: '确定',
-            month: '月',
-            month1: '1 月',
-            month2: '2 月',
-            month3: '3 月',
-            month4: '4 月',
-            month5: '5 月',
-            month6: '6 月',
-            month7: '7 月',
-            month8: '8 月',
-            month9: '9 月',
-            month10: '10 月',
-            month11: '11 月',
-            month12: '12 月',
-            year: '年',
+            selectDate: 'Tarih seç',
+            selectTime: 'Zaman seç',
+            startTime: 'Başlangıç',
+            endTime: 'Bitişe',
+            clear: 'Temizle',
+            ok: 'Tamam',
+            month: '',
+            month1: 'Ocak',
+            month2: 'Şubat',
+            month3: 'Mart',
+            month4: 'Nisan',
+            month5: 'Mayıs',
+            month6: 'Haziran',
+            month7: 'Temmuz',
+            month8: 'Ağustos',
+            month9: 'Eylül',
+            month10: 'Ekim',
+            month11: 'Kasım',
+            month12: 'Aralık',
+            year: '',
             weeks: {
-                sun: '日',
-                mon: '一',
-                tue: '二',
-                wed: '三',
-                thu: '四',
-                fri: '五',
-                sat: '六'
+                sun: 'Paz',
+                mon: 'Pzt',
+                tue: 'Sal',
+                wed: 'Çar',
+                thu: 'Per',
+                fri: 'Cum',
+                sat: 'Cmt'
             },
             months: {
-                m1: '1月',
-                m2: '2月',
-                m3: '3月',
-                m4: '4月',
-                m5: '5月',
-                m6: '6月',
-                m7: '7月',
-                m8: '8月',
-                m9: '9月',
-                m10: '10月',
-                m11: '11月',
-                m12: '12月'
+                m1: 'Oca',
+                m2: 'Şub',
+                m3: 'Mar',
+                m4: 'Nis',
+                m5: 'May',
+                m6: 'Haz',
+                m7: 'Tem',
+                m8: 'Ağu',
+                m9: 'Eyl',
+                m10: 'Ekm',
+                m11: 'Kas',
+                m12: 'Ara'
             }
         },
         transfer: {
             titles: {
-                source: '源列表',
-                target: '目的列表'
+                source: 'Kaynak',
+                target: 'Hedef'
             },
-            filterPlaceholder: '请输入搜索内容',
-            notFoundText: '列表为空'
+            filterPlaceholder: 'Arama yapın',
+            notFoundText: 'Bulunamadı'
         },
         modal: {
-            okText: '确定',
-            cancelText: '取消'
+            okText: 'Tamam',
+            cancelText: 'İptal'
         },
         poptip: {
-            okText: '确定',
-            cancelText: '取消'
+            okText: 'Tamam',
+            cancelText: 'İptal'
         },
         page: {
-            prev: '上一页',
-            next: '下一页',
-            total: '共',
-            item: '条',
-            items: '条',
-            prev5: '向前 5 页',
-            next5: '向后 5 页',
-            page: '条/页',
-            goto: '跳至',
-            p: '页'
+            prev: 'Önceki',
+            next: 'Sonraki',
+            total: 'Toplam',
+            item: 'öğe',
+            items: 'öğeler',
+            prev5: 'Önceki 5 Sayfa',
+            next5: 'Sonraki 5 Sayfa',
+            page: '/sayfa',
+            goto: 'Git',
+            p: ''
         },
         rate: {
-            star: '星',
-            stars: '星'
+            star: 'Yıldız',
+            stars: 'Yıldız'
         },
         tree: {
-            emptyText: '暂无数据'
+            emptyText: 'Veri Yok'
         }
     }
 };

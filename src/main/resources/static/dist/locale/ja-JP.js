@@ -73,12 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/locale/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 13:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90,24 +90,24 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     i: {
         select: {
-            placeholder: '请选择',
-            noMatch: '无匹配数据',
-            loading: '加载中'
+            placeholder: '選んでください',
+            noMatch: 'マッチするデータなし',
+            loading: 'ロード中'
         },
         table: {
-            noDataText: '暂无数据',
-            noFilteredDataText: '暂无筛选结果',
-            confirmFilter: '筛选',
-            resetFilter: '重置',
+            noDataText: 'データなし',
+            noFilteredDataText: 'スクリーニングしたデータなし',
+            confirmFilter: 'スクリーニング',
+            resetFilter: 'リセット',
             clearFilter: '全部'
         },
         datepicker: {
-            selectDate: '选择日期',
-            selectTime: '选择时间',
-            startTime: '开始时间',
-            endTime: '结束时间',
-            clear: '清空',
-            ok: '确定',
+            selectDate: '日時を選んでください',
+            selectTime: '時間を選んでください',
+            startTime: 'スタート時間',
+            endTime: '終了時間',
+            clear: 'クリーア',
+            ok: '確定',
             month: '月',
             month1: '1 月',
             month2: '2 月',
@@ -124,12 +124,12 @@ exports.default = {
             year: '年',
             weeks: {
                 sun: '日',
-                mon: '一',
-                tue: '二',
-                wed: '三',
-                thu: '四',
-                fri: '五',
-                sat: '六'
+                mon: '月',
+                tue: '火',
+                wed: '水',
+                thu: '木',
+                fri: '金',
+                sat: '土'
             },
             months: {
                 m1: '1月',
@@ -148,38 +148,38 @@ exports.default = {
         },
         transfer: {
             titles: {
-                source: '源列表',
-                target: '目的列表'
+                source: 'ソースリスト',
+                target: 'ターゲットリスト'
             },
-            filterPlaceholder: '请输入搜索内容',
-            notFoundText: '列表为空'
+            filterPlaceholder: '検索内容を入力ください',
+            notFoundText: '内容が見つかってなかった'
         },
         modal: {
-            okText: '确定',
-            cancelText: '取消'
+            okText: '確定',
+            cancelText: 'キャンセル'
         },
         poptip: {
-            okText: '确定',
-            cancelText: '取消'
+            okText: '確定',
+            cancelText: 'キャンセル'
         },
         page: {
-            prev: '上一页',
-            next: '下一页',
-            total: '共',
-            item: '条',
-            items: '条',
-            prev5: '向前 5 页',
-            next5: '向后 5 页',
-            page: '条/页',
-            goto: '跳至',
-            p: '页'
+            prev: '前へ',
+            next: '次へ',
+            total: '全部',
+            item: '件',
+            items: '件',
+            prev5: '前の５ページへ',
+            next5: '次の５ページへ',
+            page: '件/ページ',
+            goto: '',
+            p: 'ページ目へ'
         },
         rate: {
-            star: '星',
-            stars: '星'
+            star: '点',
+            stars: '点'
         },
         tree: {
-            emptyText: '暂无数据'
+            emptyText: 'データなし'
         }
     }
 };

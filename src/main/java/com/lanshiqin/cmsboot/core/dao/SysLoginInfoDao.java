@@ -17,4 +17,6 @@ public interface SysLoginInfoDao {
     int update(@Param("pojo") SysLoginInfo pojo);
 
     SysLoginInfo findByUserName(@Param("userName") String userName);
+
+    int deleteByUserId(@Param("idList") List<String> idList);
 }

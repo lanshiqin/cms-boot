@@ -73,12 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/locale/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 13:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90,96 +90,96 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     i: {
         select: {
-            placeholder: '请选择',
-            noMatch: '无匹配数据',
-            loading: '加载中'
+            placeholder: '선택',
+            noMatch: '일치하는 데이터 없음',
+            loading: '로딩'
         },
         table: {
-            noDataText: '暂无数据',
-            noFilteredDataText: '暂无筛选结果',
-            confirmFilter: '筛选',
-            resetFilter: '重置',
-            clearFilter: '全部'
+            noDataText: '데이터 없음',
+            noFilteredDataText: '필터된 데이터 없음',
+            confirmFilter: '확인',
+            resetFilter: '초기화',
+            clearFilter: '전부'
         },
         datepicker: {
-            selectDate: '选择日期',
-            selectTime: '选择时间',
-            startTime: '开始时间',
-            endTime: '结束时间',
-            clear: '清空',
-            ok: '确定',
-            month: '月',
-            month1: '1 月',
-            month2: '2 月',
-            month3: '3 月',
-            month4: '4 月',
-            month5: '5 月',
-            month6: '6 月',
-            month7: '7 月',
-            month8: '8 月',
-            month9: '9 月',
-            month10: '10 月',
-            month11: '11 月',
-            month12: '12 月',
-            year: '年',
+            selectDate: '날짜 선택',
+            selectTime: '시간 선택',
+            startTime: '시작 시간',
+            endTime: '종료 시간',
+            clear: '삭제',
+            ok: '예',
+            month: '월',
+            month1: '1월',
+            month2: '2월',
+            month3: '3월',
+            month4: '4월',
+            month5: '5월',
+            month6: '6월',
+            month7: '7월',
+            month8: '8월',
+            month9: '9월',
+            month10: '10월',
+            month11: '11월',
+            month12: '12월',
+            year: '년',
             weeks: {
-                sun: '日',
-                mon: '一',
-                tue: '二',
-                wed: '三',
-                thu: '四',
-                fri: '五',
-                sat: '六'
+                sun: '일',
+                mon: '월',
+                tue: '화',
+                wed: '수',
+                thu: '목',
+                fri: '금',
+                sat: '토'
             },
             months: {
-                m1: '1月',
-                m2: '2月',
-                m3: '3月',
-                m4: '4月',
-                m5: '5月',
-                m6: '6月',
-                m7: '7月',
-                m8: '8月',
-                m9: '9月',
-                m10: '10月',
-                m11: '11月',
-                m12: '12月'
+                m1: '1월',
+                m2: '2월',
+                m3: '3월',
+                m4: '4월',
+                m5: '5월',
+                m6: '6월',
+                m7: '7월',
+                m8: '8월',
+                m9: '9월',
+                m10: '10월',
+                m11: '11월',
+                m12: '12월'
             }
         },
         transfer: {
             titles: {
-                source: '源列表',
-                target: '目的列表'
+                source: '소스',
+                target: '타겟'
             },
-            filterPlaceholder: '请输入搜索内容',
-            notFoundText: '列表为空'
+            filterPlaceholder: '여기서 찾기',
+            notFoundText: '아무 것도 찾을 수 없음'
         },
         modal: {
-            okText: '确定',
-            cancelText: '取消'
+            okText: '예',
+            cancelText: '취소'
         },
         poptip: {
-            okText: '确定',
-            cancelText: '取消'
+            okText: '예',
+            cancelText: '취소'
         },
         page: {
-            prev: '上一页',
-            next: '下一页',
-            total: '共',
-            item: '条',
-            items: '条',
-            prev5: '向前 5 页',
-            next5: '向后 5 页',
-            page: '条/页',
-            goto: '跳至',
-            p: '页'
+            prev: '이전 페이지',
+            next: '다음 페이지',
+            total: '전체',
+            item: '항목',
+            items: '항목',
+            prev5: '이전 5 페이지',
+            next5: '다음 5 페이지',
+            page: '/페이지',
+            goto: '이동',
+            p: ''
         },
         rate: {
-            star: '星',
-            stars: '星'
+            star: '중요',
+            stars: '중요'
         },
         tree: {
-            emptyText: '暂无数据'
+            emptyText: '데이터 없음'
         }
     }
 };

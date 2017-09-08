@@ -133,5 +133,27 @@
             </if>
         </where>
     </select>
+
+    <select id="search" resultMap="AllColumnMap" parameterType="com.lanshiqin.cmsboot.core.filter.UserInfoFilter">
+        SELECT * FROM sys_user_info
+        <where>
+            <if test="pojo.sysId!=null">
+                sys_user_info.sys_id = #{pojo.sysId}
+            </if>
+            <if test="pojo.nick!=null">
+                sys_user_info.nick = #{pojo.nick}
+            </if>
+            <if test="pojo.sex!=null">
+                sys_user_info.sex = #{pojo.sex}
+            </if>
+        </where>
+    </select>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM  sys_user_info WHERE sys_user_info.sys_id IN
+        <foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>
 

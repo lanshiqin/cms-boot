@@ -1,5 +1,6 @@
 package com.lanshiqin.cmsboot.core.service;
 
+import com.lanshiqin.cmsboot.core.filter.UserInfoFilter;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -30,5 +31,13 @@ public class SysUserInfoService{
 
     public SysUserInfo findById(Long userId) {
         return sysUserInfoDao.findById(userId);
+    }
+
+    public List<SysUserInfo> search(UserInfoFilter userInfoFilter) {
+        return sysUserInfoDao.search(userInfoFilter);
+    }
+
+    public int delete(List<String> idList) {
+        return sysUserInfoDao.delete(idList);
     }
 }

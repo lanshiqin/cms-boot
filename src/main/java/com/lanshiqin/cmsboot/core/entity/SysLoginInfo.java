@@ -6,7 +6,7 @@ package com.lanshiqin.cmsboot.core.entity;
 public class SysLoginInfo extends LongEntity {
     private String userName;    // 用户名
     private String passWord;    // 密码
-    private Long userId;        // 用户信息表
+    private Long userId;        // 用户信息表id
     private String status;      // 账号状态（1：正常，0：禁用）
 
     public String getUserName() {

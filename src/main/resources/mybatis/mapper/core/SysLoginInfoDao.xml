@@ -142,5 +142,13 @@
             </if>
         </where>
     </select>
+
+    <delete id="deleteByUserId" parameterType="String">
+        DELETE FROM  sys_login_info WHERE sys_login_info.user_id IN
+        <foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
 </mapper>
 

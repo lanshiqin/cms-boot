@@ -73,12 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/locale/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 13:
+/***/ 12:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90,96 +90,96 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     i: {
         select: {
-            placeholder: '请选择',
-            noMatch: '无匹配数据',
-            loading: '加载中'
+            placeholder: 'Chọn',
+            noMatch: 'Không tìm thấy',
+            loading: 'Đang tải'
         },
         table: {
-            noDataText: '暂无数据',
-            noFilteredDataText: '暂无筛选结果',
-            confirmFilter: '筛选',
-            resetFilter: '重置',
-            clearFilter: '全部'
+            noDataText: 'Không có dữ liệu',
+            noFilteredDataText: 'Không có dữ liệu lọc',
+            confirmFilter: 'Xác nhận',
+            resetFilter: 'Làm lại',
+            clearFilter: 'Xóa hết'
         },
         datepicker: {
-            selectDate: '选择日期',
-            selectTime: '选择时间',
-            startTime: '开始时间',
-            endTime: '结束时间',
-            clear: '清空',
-            ok: '确定',
-            month: '月',
-            month1: '1 月',
-            month2: '2 月',
-            month3: '3 月',
-            month4: '4 月',
-            month5: '5 月',
-            month6: '6 月',
-            month7: '7 月',
-            month8: '8 月',
-            month9: '9 月',
-            month10: '10 月',
-            month11: '11 月',
-            month12: '12 月',
-            year: '年',
+            selectDate: 'Chọn ngày',
+            selectTime: 'Chọn giờ',
+            startTime: 'Ngày bắt đầu',
+            endTime: 'Ngày kết thúc',
+            clear: 'Xóa',
+            ok: 'Đồng ý',
+            month: '',
+            month1: 'Tháng 1',
+            month2: 'Tháng 2',
+            month3: 'Tháng 3',
+            month4: 'Tháng 4',
+            month5: 'Tháng 5',
+            month6: 'Tháng 6',
+            month7: 'Tháng 7',
+            month8: 'Tháng 8',
+            month9: 'Tháng 9',
+            month10: 'Tháng 10',
+            month11: 'Tháng 11',
+            month12: 'Tháng 12',
+            year: '',
             weeks: {
-                sun: '日',
-                mon: '一',
-                tue: '二',
-                wed: '三',
-                thu: '四',
-                fri: '五',
-                sat: '六'
+                sun: 'CN',
+                mon: 'T2',
+                tue: 'T3',
+                wed: 'T4',
+                thu: 'T5',
+                fri: 'T6',
+                sat: 'T7'
             },
             months: {
-                m1: '1月',
-                m2: '2月',
-                m3: '3月',
-                m4: '4月',
-                m5: '5月',
-                m6: '6月',
-                m7: '7月',
-                m8: '8月',
-                m9: '9月',
-                m10: '10月',
-                m11: '11月',
-                m12: '12月'
+                m1: 'Th.1',
+                m2: 'Th.2',
+                m3: 'Th.3',
+                m4: 'Th.4',
+                m5: 'Th.5',
+                m6: 'Th.6',
+                m7: 'Th.7',
+                m8: 'Th.8',
+                m9: 'Th.9',
+                m10: 'Th.10',
+                m11: 'Th.11',
+                m12: 'Th.12'
             }
         },
         transfer: {
             titles: {
-                source: '源列表',
-                target: '目的列表'
+                source: 'Nguồn',
+                target: 'Đích'
             },
-            filterPlaceholder: '请输入搜索内容',
-            notFoundText: '列表为空'
+            filterPlaceholder: 'Nhập từ khóa',
+            notFoundText: 'Không tìm thấy'
         },
         modal: {
-            okText: '确定',
-            cancelText: '取消'
+            okText: 'Đồng ý',
+            cancelText: 'Hủy bỏ'
         },
         poptip: {
-            okText: '确定',
-            cancelText: '取消'
+            okText: 'Đồng ý',
+            cancelText: 'Hủy bỏ'
         },
         page: {
-            prev: '上一页',
-            next: '下一页',
-            total: '共',
-            item: '条',
-            items: '条',
-            prev5: '向前 5 页',
-            next5: '向后 5 页',
-            page: '条/页',
-            goto: '跳至',
-            p: '页'
+            prev: 'Trang trước',
+            next: 'Trang kế',
+            total: 'Tổng',
+            item: 'kết quả',
+            items: 'kết quả',
+            prev5: '5 trang trước',
+            next5: '5 trang kế',
+            page: '/trang',
+            goto: 'Tới trang',
+            p: ''
         },
         rate: {
-            star: '星',
-            stars: '星'
+            star: 'Sao',
+            stars: 'Sao'
         },
         tree: {
-            emptyText: '暂无数据'
+            emptyText: 'Không có dữ liệu'
         }
     }
 };

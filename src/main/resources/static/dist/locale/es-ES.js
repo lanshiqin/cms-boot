@@ -73,12 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/locale/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 13:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90,96 +90,96 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     i: {
         select: {
-            placeholder: '请选择',
-            noMatch: '无匹配数据',
-            loading: '加载中'
+            placeholder: 'Seleccionar',
+            noMatch: 'Sin coincidencias',
+            loading: 'Cargando'
         },
         table: {
-            noDataText: '暂无数据',
-            noFilteredDataText: '暂无筛选结果',
-            confirmFilter: '筛选',
-            resetFilter: '重置',
-            clearFilter: '全部'
+            noDataText: 'Sin Datos',
+            noFilteredDataText: 'Sin Datos para el filtro',
+            confirmFilter: 'Aceptar',
+            resetFilter: 'Quitar filtro',
+            clearFilter: 'Todos'
         },
         datepicker: {
-            selectDate: '选择日期',
-            selectTime: '选择时间',
-            startTime: '开始时间',
-            endTime: '结束时间',
-            clear: '清空',
-            ok: '确定',
-            month: '月',
-            month1: '1 月',
-            month2: '2 月',
-            month3: '3 月',
-            month4: '4 月',
-            month5: '5 月',
-            month6: '6 月',
-            month7: '7 月',
-            month8: '8 月',
-            month9: '9 月',
-            month10: '10 月',
-            month11: '11 月',
-            month12: '12 月',
-            year: '年',
+            selectDate: 'Seleccionar fecha',
+            selectTime: 'Seleccionar hora',
+            startTime: 'Hora de inicio',
+            endTime: 'Hora de fin',
+            clear: 'Limpiar',
+            ok: 'Aceptar',
+            month: 'Mes',
+            month1: 'Enero',
+            month2: 'Febrero',
+            month3: 'Marzo',
+            month4: 'Abril',
+            month5: 'Mayo',
+            month6: 'Junio',
+            month7: 'Julio',
+            month8: 'Augosto',
+            month9: 'Septiembre',
+            month10: 'Octubre',
+            month11: 'Noviembre',
+            month12: 'Deciembre',
+            year: 'Año',
             weeks: {
-                sun: '日',
-                mon: '一',
-                tue: '二',
-                wed: '三',
-                thu: '四',
-                fri: '五',
-                sat: '六'
+                sun: 'Domingo',
+                mon: 'Lunes',
+                tue: 'Martes',
+                wed: 'Miércoles',
+                thu: 'Jueves',
+                fri: 'Viernes',
+                sat: 'Sábado'
             },
             months: {
-                m1: '1月',
-                m2: '2月',
-                m3: '3月',
-                m4: '4月',
-                m5: '5月',
-                m6: '6月',
-                m7: '7月',
-                m8: '8月',
-                m9: '9月',
-                m10: '10月',
-                m11: '11月',
-                m12: '12月'
+                m1: 'Ene',
+                m2: 'Feb',
+                m3: 'Mar',
+                m4: 'Abr',
+                m5: 'May',
+                m6: 'Jun',
+                m7: 'Jul',
+                m8: 'Ago',
+                m9: 'Sep',
+                m10: 'Oct',
+                m11: 'Nov',
+                m12: 'Dic'
             }
         },
         transfer: {
             titles: {
-                source: '源列表',
-                target: '目的列表'
+                source: 'Origen',
+                target: 'Destino'
             },
-            filterPlaceholder: '请输入搜索内容',
-            notFoundText: '列表为空'
+            filterPlaceholder: 'Buscar aquí',
+            notFoundText: 'Sin resultados'
         },
         modal: {
-            okText: '确定',
-            cancelText: '取消'
+            okText: 'Aceptar',
+            cancelText: 'Cancelar'
         },
         poptip: {
-            okText: '确定',
-            cancelText: '取消'
+            okText: 'Aceptar',
+            cancelText: 'Cancelar'
         },
         page: {
-            prev: '上一页',
-            next: '下一页',
-            total: '共',
-            item: '条',
-            items: '条',
-            prev5: '向前 5 页',
-            next5: '向后 5 页',
-            page: '条/页',
-            goto: '跳至',
-            p: '页'
+            prev: 'Página Anterior',
+            next: 'Página Siguiente',
+            total: 'Total',
+            item: 'Elemento',
+            items: 'Elementos',
+            prev5: '5 Páginas Anteriores',
+            next5: '5 Páginas Siguientes',
+            page: '/page',
+            goto: 'Ir a',
+            p: ''
         },
         rate: {
-            star: '星',
-            stars: '星'
+            star: 'Estrella',
+            stars: 'Estrellas'
         },
         tree: {
-            emptyText: '暂无数据'
+            emptyText: 'Sin Datos'
         }
     }
 };
