@@ -19,4 +19,6 @@ public interface SysLoginInfoDao {
     SysLoginInfo findByUserName(@Param("userName") String userName);
 
     int deleteByUserId(@Param("idList") List<String> idList);
+
+    SysLoginInfo findByUserId(@Param("userId") Long userId);
 }

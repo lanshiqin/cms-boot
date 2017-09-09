@@ -150,5 +150,14 @@
         </foreach>
     </delete>
 
+    <select id="findByUserId" resultMap="AllColumnMap" parameterType="Long">
+        SELECT * FROM sys_login_info
+        <where>
+            <if test="userId!=null">
+                sys_login_info.user_id = #{userId}
+            </if>
+        </where>
+    </select>
+
 </mapper>
 

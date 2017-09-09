@@ -138,13 +138,13 @@
         SELECT * FROM sys_user_info
         <where>
             <if test="pojo.sysId!=null">
-                sys_user_info.sys_id = #{pojo.sysId}
+                AND sys_user_info.sys_id = #{pojo.sysId}
             </if>
             <if test="pojo.nick!=null">
-                sys_user_info.nick = #{pojo.nick}
+                AND sys_user_info.nick LIKE CONCAT('%','${pojo.nick}','%')
             </if>
             <if test="pojo.sex!=null">
-                sys_user_info.sex = #{pojo.sex}
+                AND sys_user_info.sex = #{pojo.sex}
             </if>
         </where>
     </select>

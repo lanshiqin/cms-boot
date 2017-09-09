@@ -36,4 +36,8 @@ public class SysLoginInfoService{
     public int deleteByUserId(List<String> idList) {
         return sysLoginInfoDao.deleteByUserId(idList);
     }
+
+    public SysLoginInfo findByUserId(Long userId) {
+        return sysLoginInfoDao.findByUserId(userId);
+    }
 }

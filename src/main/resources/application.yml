@@ -24,6 +24,9 @@ spring:
 #日志配置
 logging:
   config: classpath:logback-spring.xml
+  level:
+    com:
+      lanshiqin:  debug
 
 #mybatis配置
 mybatis:

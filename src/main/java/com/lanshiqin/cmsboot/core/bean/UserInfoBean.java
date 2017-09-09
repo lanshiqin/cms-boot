@@ -9,6 +9,11 @@ public class UserInfoBean {
     private String sex;
     private String birthday;
 
+    private String userName;    // 用户名
+    private String passWord;    // 密码
+    private String status;      // 账号状态（1：正常，0：禁用）
+
+
     public Long getSysId() {
         return sysId;
     }
@@ -39,5 +44,29 @@ public class UserInfoBean {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

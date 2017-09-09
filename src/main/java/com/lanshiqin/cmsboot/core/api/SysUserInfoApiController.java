@@ -47,11 +47,25 @@ public class SysUserInfoApiController extends JsonBaseController {
 
         List<UserInfoBean> userInfoBeanList = new ArrayList<>();
         for (SysUserInfo sysUserInfo: sysUserInfoList){
+
+            SysLoginInfo sysLoginInfo = sysLoginInfoService.findByUserId(sysUserInfo.getSysId());
+
             UserInfoBean userInfoBean = new UserInfoBean();
             userInfoBean.setSysId(sysUserInfo.getSysId());
             userInfoBean.setNick(sysUserInfo.getNick());
             userInfoBean.setSex(sysUserInfo.getSex());
             userInfoBean.setBirthday(sysUserInfo.getBirthday());
+
+            if (ObjectUtils.isNotBlank(sysLoginInfo)){
+                userInfoBean.setUserName(sysLoginInfo.getUserName());
+                userInfoBean.setPassWord(sysLoginInfo.getPassWord());
+                if(sysLoginInfo.getStatus().equals("1")){
+                    userInfoBean.setStatus("正常");
+                }else if(sysLoginInfo.getStatus().equals("0")){
+                    userInfoBean.setStatus("禁用");
+                }
+            }
+
             userInfoBeanList.add(userInfoBean);
         }
 
@@ -68,17 +82,40 @@ public class SysUserInfoApiController extends JsonBaseController {
     @Transactional
     public JsonDataBean saveUserInfo(UserInfoFilter userInfoFilter){
 
+        // 校验必填参数
+        if (ObjectUtils.isBlank(userInfoFilter.getUserName())){
+            return getJsonDataBean("500","用户名不能为空");
+        }
+        if (ObjectUtils.isBlank(userInfoFilter.getPassWord())){
+            return getJsonDataBean("500","密码不能为空");
+        }
+        if (ObjectUtils.isBlank(userInfoFilter.getNick())){
+            return getJsonDataBean("500","昵称不能为空");
+        }
+
+        // 校验用户名是否已经存在
+        SysLoginInfo sysLoginInfo =  sysLoginInfoService.findByUserName(userInfoFilter.getUserName());
+
+        if (ObjectUtils.isNotBlank(sysLoginInfo)){
+            return getJsonDataBean("500","用户名已存在,请重新输入");
+        }
+
         SysUserInfo sysUserInfo = new SysUserInfo();
         sysUserInfo.setNick(userInfoFilter.getNick());
         sysUserInfo.setSex(userInfoFilter.getSex());
         sysUserInfo.setBirthday(userInfoFilter.getBirthday());
 
         if (sysUserInfoService.insertSelective(sysUserInfo)>0){
-            SysLoginInfo sysLoginInfo = new SysLoginInfo();
+            sysLoginInfo = new SysLoginInfo();
             sysLoginInfo.setUserName(userInfoFilter.getUserName());
             sysLoginInfo.setPassWord(userInfoFilter.getPassWord());
             sysLoginInfo.setUserId(sysUserInfo.getSysId());
-            sysLoginInfo.setStatus("1");
+
+            if (ObjectUtils.isBlank(userInfoFilter.getStatus())){   // 如果账户状态没有值，默认设置为启用
+                sysLoginInfo.setStatus("1");
+            }else{
+                sysLoginInfo.setStatus(userInfoFilter.getStatus());
+            }
             if (sysLoginInfoService.insertSelective(sysLoginInfo)>0){
                 return getJsonDataBean("200","保存成功");
             }
@@ -106,5 +143,48 @@ public class SysUserInfoApiController extends JsonBaseController {
 
         }
         return getJsonDataBean("500","删除失败");
+    }
+
+    /**
+     * 更新用户信息
+     * @param userInfoFilter 用户信息过滤器
+     * @return 更新状态
+     */
+    @RequestMapping("/editUserInfo")
+    @ResponseBody
+    @Transactional
+    public JsonDataBean editUserInfo(UserInfoFilter userInfoFilter){
+
+        if (ObjectUtils.isBlank(userInfoFilter.getSysId())){
+            return getJsonDataBean("500","更新失败","用户id不能为空");
+        }
+
+        SysUserInfo sysUserInfo = sysUserInfoService.findById(Long.valueOf(userInfoFilter.getSysId()));
+
+        if (ObjectUtils.isBlank(sysUserInfo)){
+            return getJsonDataBean("500","更新失败","用户不存在");
+        }
+
+        sysUserInfo.setNick(userInfoFilter.getNick());
+        sysUserInfo.setSex(userInfoFilter.getSex());
+        sysUserInfo.setBirthday(userInfoFilter.getBirthday());
+
+        if (sysUserInfoService.update(sysUserInfo)>0){
+
+            SysLoginInfo sysLoginInfo = sysLoginInfoService.findByUserId(sysUserInfo.getSysId());
+
+            if (ObjectUtils.isBlank(sysLoginInfo)){
+                return getJsonDataBean("500","更新失败","用户登录信息不存在");
+            }
+
+            sysLoginInfo.setUserName(userInfoFilter.getUserName());
+            sysLoginInfo.setPassWord(userInfoFilter.getPassWord());
+            sysLoginInfo.setStatus(userInfoFilter.getStatus());
+            if (sysLoginInfoService.update(sysLoginInfo)>0){
+                return getJsonDataBean("200","编辑成功");
+            }
+        }
+
+        return getJsonDataBean("500","更新失败");
     }
 }

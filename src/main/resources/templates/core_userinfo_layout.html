@@ -16,13 +16,13 @@
     <div style="right: 0; top: 0; position: absolute;">
         <i-button type="info" @click="infoModal = true">查询</i-button>
         <i-button type="success" @click="addModal = true">新增</i-button>
-        <i-button type="warning" @click="editModal = true">修改</i-button>
+        <i-button type="warning" @click="editModalFunc">修改</i-button>
         <i-button type="error" @click="delModal = true">删除</i-button>
     </div>
     <!--操作按钮 end-->
 
 
-    <!--新增用户对话框 start-->
+    <!--删除用户对话框 start-->
     <Modal
             v-model="delModal"
             title="删除用户"
@@ -30,6 +30,91 @@
             @on-cancel="cancel">
         <p>确定要删除吗？</p>
     </Modal>
+    <!--删除用户对话框 end-->
+
+    <!--不允许编辑对话框 start-->
+    <Modal
+            v-model="noPerEditModal"
+            title="提示"
+            @on-ok="ok"
+            @on-cancel="cancel">
+        <p>请选择一个列表项</p>
+    </Modal>
+    <!--不允许编辑对话框 end-->
+
+    <!--查询用户对话框 start-->
+    <Modal
+            v-model="infoModal"
+            title="查找用户"
+            @on-ok="searchUserInfo"
+            @on-cancel="cancel"
+            width="600">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                昵称：
+                <i-input v-model="userFilter.nick" placeholder="请输入昵称" style="width: 200px"></i-input>
+            </div>
+        </div>
+        <br>
+
+
+    </Modal>
+    <!--查询用户对话框 end-->
+
+
+    <!--编辑用户对话框 start-->
+    <Modal
+            v-model="editModal"
+            title="编辑用户"
+            @on-ok="editUserInfo"
+            @on-cancel="cancel"
+            width="600">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                用户名：
+                <i-input v-model="userinfo.userName" placeholder="请输入用户名" style="width: 200px"></i-input>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                密码：
+                <i-input v-model="userinfo.passWord" type="password" placeholder="请输入密码" style="width: 200px"></i-input>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                昵称：
+                <i-input v-model="userinfo.nick" placeholder="请输入昵称" style="width: 200px"></i-input>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                性别：
+                <Radio-Group v-model="userinfo.sex" type="button">
+                    <Radio label="男"></Radio>
+                    <Radio label="女"></Radio>
+                </Radio-Group>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                出生日期:
+                <Date-Picker :value="new Date()" format="yyyy年MM月dd日" type="date" placeholder="选择日期"
+                             style="width: 200px" @on-change="dateChange"></Date-Picker>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                账号状态：
+                <Radio-Group v-model="userinfo.status" type="button">
+                    <Radio label="1">正常</Radio>
+                    <Radio label="0">禁用</Radio>
+                </Radio-Group>
+            </div>
+
+        </div>
+
+    </Modal>
+    <!--编辑用户对话框 end-->
+
 
     <!--新增用户对话框 start-->
     <Modal
@@ -57,7 +142,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 性别：
-                <Radio-Group v-model="userinfo.sex">
+                <Radio-Group v-model="userinfo.sex" type="button">
                     <Radio label="男"></Radio>
                     <Radio label="女"></Radio>
                 </Radio-Group>
@@ -67,7 +152,15 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 出生日期:
-                <Date-Picker :value="new Date()" format="yyyy年MM月dd日" type="date" placeholder="选择日期" style="width: 200px" @on-change="dateChange"></Date-Picker>
+                <Date-Picker :value="new Date()" format="yyyy年MM月dd日" type="date" placeholder="选择日期"
+                             style="width: 200px" @on-change="dateChange"></Date-Picker>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                账号状态：
+                <Radio-Group v-model="userinfo.status" type="button">
+                    <Radio label="1">正常</Radio>
+                    <Radio label="0">禁用</Radio>
+                </Radio-Group>
             </div>
 
         </div>
@@ -93,7 +186,7 @@
 <script>
     new Vue({
         el: '#userinfo_layout',
-        mounted(){
+        mounted() {
             this.loadUserInfo();
         },
         data() {
@@ -115,25 +208,40 @@
                     {
                         title: '生日',
                         key: 'birthday'
+                    },
+                    {
+                        title: '用户名',
+                        key: 'userName'
+                    },
+                    {
+                        title: '账号状态',
+                        key: 'status'
                     }
                 ],
                 userInfoListData: [],// 用户信息列表项数据
-                delUserInfoList:[], // 待删除的用户集合
+                delUserInfoList: [], // 待删除的用户集合
                 infoModal: false,    // 查询对话框（false为不显示）
                 addModal: false,    // 新增对话框（false为不显示）
                 editModal: false,   // 编辑对话框（false为不显示）
+                noPerEditModal: false,  // 不允许编辑（true时提示不允许编辑）
+                isEdit: false,      // 是否允许编辑（勾选多个时为false，不允许编辑）
                 delModal: false,    // 删除对话框（false为不显示）
                 userinfo: {         // 用户信息（新增用户时存储的数据）
+                    sysId: '',
                     userName: '',
                     passWord: '',
                     nick: '',
                     sex: '男',
-                    birthday: new Date(),
+                    status: '1',
+                    birthday: getNowFormatDate(),
+                },
+                userFilter:{
+                    nick: null,
                 }
             }
         },
         methods: {
-            loadUserInfo(){
+            loadUserInfo() {
                 let vue = this;
                 $.ajax({
                     type: 'POST',
@@ -141,8 +249,23 @@
                     data: null,
                     success: function (data) {
                         const obj = eval(data);
-                        if (obj.code==="200"){
-                            vue.userInfoListData=obj.data;
+                        if (obj.code === "200") {
+                            vue.userInfoListData = obj.data;
+                        }
+                    }
+                });
+            },
+            searchUserInfo(){
+                let vue = this;
+                $.ajax({
+                    type: 'POST',
+                    url: '/core/getUserInfoList',
+                    data: vue.userFilter,
+                    success: function (data) {
+                        console.info(data);
+                        const obj = eval(data);
+                        if (obj.code === "200") {
+                            vue.userInfoListData = obj.data;
                         }
                     }
                 });
@@ -156,43 +279,108 @@
                     success: function (data) {
                         const obj = eval(data);
                         vue.$Message.info(obj.message);
-                        if (obj.code==="200"){
-                            vue.loadUserInfo();
+                        if (obj.code === "200") {
+                            vue.clearUserInfo();    // 清空用户信息
+                            vue.loadUserInfo();     // 重新加载列表项
                         }
                     }
                 });
             },
-            delUserInfo(){
+            delUserInfo() {
                 let vue = this;
                 $.ajax({
                     type: 'POST',
                     url: '/core/deleteUserInfo',
-                    data: "idList="+vue.delUserInfoList,
+                    data: "idList=" + vue.delUserInfoList,
                     success: function (data) {
-                        console.info(data);
                         const obj = eval(data);
                         vue.$Message.info(obj.message);
-                        if (obj.code==="200"){
+                        if (obj.code === "200") {
                             vue.loadUserInfo();
                         }
                     }
                 });
             },
-            selectItem(data){
-                var ids = "";
-                for (var i = 0; i < data.length; i++){
-                    ids += data[i].sysId+",";
+            editUserInfo() {
+                let vue = this;
+                $.ajax({
+                    type: 'POST',
+                    url: '/core/editUserInfo',
+                    data: vue.userinfo,
+                    success: function (data) {
+                        const obj = eval(data);
+                        vue.$Message.info(obj.message);
+                        if (obj.code === "200") {
+                            vue.loadUserInfo();
+                        }
+                    }
+                });
+            },
+            editModalFunc() {    // 点击编辑按钮时
+                if (this.isEdit) {   // 允许编辑时弹出编辑对话框
+                    this.editModal = true;
+                } else {
+                    this.noPerEditModal = true; // 弹出不允许编辑对话框
+                }
+            },
+            selectItem(data) {   // 列表项选择
+
+                let ids = "";
+                for (let i = 0; i < data.length; i++) {
+                    ids += data[i].sysId + ",";
                 }
                 this.delUserInfoList = [ids];
+
+                if (data.length === 1) {
+                    this.isEdit = true;
+                    this.userinfo.sysId = data[0].sysId;
+                    this.userinfo.userName = data[0].userName;
+                    this.userinfo.passWord = data[0].passWord;
+                    this.userinfo.nick = data[0].nick;
+                    this.userinfo.sex = data[0].sex;
+                } else {
+                    this.isEdit = false;
+                    this.userinfo.sysId = '';
+                    this.userinfo.userName = '';
+                    this.userinfo.passWord = '';
+                    this.userinfo.nick = '';
+                    this.userinfo.sex = '';
+                }
+
             },
-            dateChange(data){
-                this.userinfo.birthday=data;
+            dateChange(data) {
+                this.userinfo.birthday = data;
+            },
+            clearUserInfo() {    // 清空对话框的用户信息
+                this.userinfo.userName = '';
+                this.userinfo.passWord = '';
+                this.userinfo.nick = '';
+                this.userinfo.sex = '男';
+                this.userinfo.birthday = new Date();
+                this.userinfo.status = '1';
+            },
+            ok() {
+                clearUserInfo();
             },
             cancel() {
-//                this.$Message.info('点击了取消');
+                clearUserInfo();
             }
         }
     });
+
+    function getNowFormatDate() {
+        let date = new Date();
+        let month = date.getMonth() + 1;
+        let strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        return date.getFullYear() + "年" + month + "月" + strDate
+            + "日";
+    }
 </script>
 </body>
 </html>
