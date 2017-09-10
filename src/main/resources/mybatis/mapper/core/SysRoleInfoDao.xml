@@ -123,5 +123,24 @@
             #{item}
         </foreach>
     </select>
+
+    <select id="search" resultMap="AllColumnMap" parameterType="com.lanshiqin.cmsboot.core.filter.RoleInfoFilter">
+        SELECT * FROM sys_role_info
+        <where>
+            <if test="roleInfoFilter.name!=null">
+                sys_role_info.name LIKE CONCAT('%','${roleInfoFilter.name}','%')
+            </if>
+            <if test="roleInfoFilter.type!=null">
+                AND sys_role_info.type LIKE CONCAT('%','${roleInfoFilter.type}','%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteIn" parameterType="String">
+        DELETE FROM  sys_role_info WHERE sys_role_info.sys_id IN
+        <foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>
 

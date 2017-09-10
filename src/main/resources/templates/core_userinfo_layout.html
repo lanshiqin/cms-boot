@@ -111,6 +111,15 @@
             </div>
 
         </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                角色：
+                <i-select v-model="userinfo.roleId" style="width:200px">
+                    <i-option v-for="item in roleInfoListData" :value="item.sysId" :key="item.name" label="item.name">{{ item.name }}</i-option>
+                </i-select>
+            </div>
+        </div>
 
     </Modal>
     <!--编辑用户对话框 end-->
@@ -164,6 +173,15 @@
             </div>
 
         </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                角色：
+                <i-select v-model="userinfo.roleId" style="width:200px">
+                    <i-option v-for="item in roleInfoListData" :value="item.sysId" :key="item.name" label="item.name">{{ item.name }}</i-option>
+                </i-select>
+            </div>
+        </div>
 
     </Modal>
     <!--新增用户对话框 end-->
@@ -188,6 +206,7 @@
         el: '#userinfo_layout',
         mounted() {
             this.loadUserInfo();
+            this.loadRoleInfo();
         },
         data() {
             return {
@@ -219,6 +238,7 @@
                     }
                 ],
                 userInfoListData: [],// 用户信息列表项数据
+                roleInfoListData:[],    // 角色信息列表
                 delUserInfoList: [], // 待删除的用户集合
                 infoModal: false,    // 查询对话框（false为不显示）
                 addModal: false,    // 新增对话框（false为不显示）
@@ -234,6 +254,7 @@
                     sex: '男',
                     status: '1',
                     birthday: getNowFormatDate(),
+                    roleId: '1'
                 },
                 userFilter:{
                     nick: null,
@@ -251,6 +272,21 @@
                         const obj = eval(data);
                         if (obj.code === "200") {
                             vue.userInfoListData = obj.data;
+                        }
+                    }
+                });
+            },
+            loadRoleInfo() {
+                let vue = this;
+                $.ajax({
+                    type: 'POST',
+                    url: '/core/getRoleInfoList',
+                    data: null,
+                    success: function (data) {
+                        const obj = eval(data);
+                        if (obj.code === "200") {
+                            vue.roleInfoListData = obj.data;
+
                         }
                     }
                 });

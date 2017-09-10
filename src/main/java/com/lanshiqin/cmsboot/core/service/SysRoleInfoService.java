@@ -1,5 +1,6 @@
 package com.lanshiqin.cmsboot.core.service;
 
+import com.lanshiqin.cmsboot.core.filter.RoleInfoFilter;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -30,5 +31,13 @@ public class SysRoleInfoService{
 
     public List<SysRoleInfo> findByIn(List<String> roleIdList) {
         return sysRoleInfoDao.findByIn(roleIdList);
+    }
+
+    public List<SysRoleInfo> search(RoleInfoFilter roleInfoFilter) {
+        return sysRoleInfoDao.search(roleInfoFilter);
+    }
+
+    public int deleteIn(List<String> idList) {
+        return sysRoleInfoDao.deleteIn(idList);
     }
 }

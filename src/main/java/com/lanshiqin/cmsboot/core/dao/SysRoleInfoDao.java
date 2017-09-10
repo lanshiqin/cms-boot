@@ -1,5 +1,6 @@
 package com.lanshiqin.cmsboot.core.dao;
 
+import com.lanshiqin.cmsboot.core.filter.RoleInfoFilter;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,4 +18,8 @@ public interface SysRoleInfoDao {
     int update(@Param("pojo") SysRoleInfo pojo);
 
     List<SysRoleInfo> findByIn(@Param("roleIdList") List<String> roleIdList);
+
+    List<SysRoleInfo> search(@Param("roleInfoFilter") RoleInfoFilter roleInfoFilter);
+
+    int deleteIn(@Param("idList") List<String> idList);
 }
