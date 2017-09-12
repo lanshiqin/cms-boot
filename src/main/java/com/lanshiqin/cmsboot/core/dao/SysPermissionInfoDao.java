@@ -1,5 +1,6 @@
 package com.lanshiqin.cmsboot.core.dao;
 
+import com.lanshiqin.cmsboot.core.filter.PermissionInfoFilter;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,4 +18,8 @@ public interface SysPermissionInfoDao {
     int update(@Param("pojo") SysPermissionInfo pojo);
 
     List<SysPermissionInfo> findByIn(@Param("permissionIdList") List<String> permissionIdList);
+
+    List<SysPermissionInfo> search(@Param("permissionInfoFilter") PermissionInfoFilter permissionInfoFilter);
+
+    int deleteIn(@Param("idList") List<String> idList);
 }

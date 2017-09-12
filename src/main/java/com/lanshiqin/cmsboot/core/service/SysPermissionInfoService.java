@@ -1,5 +1,6 @@
 package com.lanshiqin.cmsboot.core.service;
 
+import com.lanshiqin.cmsboot.core.filter.PermissionInfoFilter;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -30,5 +31,13 @@ public class SysPermissionInfoService{
 
     public List<SysPermissionInfo> findByIn(List<String> permissionIdList) {
         return sysPermissionInfoDao.findByIn(permissionIdList);
+    }
+
+    public List<SysPermissionInfo> search(PermissionInfoFilter permissionInfoFilter) {
+        return sysPermissionInfoDao.search(permissionInfoFilter);
+    }
+
+    public int deleteIn(List<String> idList) {
+        return sysPermissionInfoDao.deleteIn(idList);
     }
 }
