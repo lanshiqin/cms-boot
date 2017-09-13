@@ -77,7 +77,7 @@ CREATE TABLE `sys_login_info` (
   `update_user` varchar(50) NOT NULL DEFAULT '' COMMENT '更新用户',
   PRIMARY KEY (`sys_id`),
   UNIQUE KEY `sys_id` (`sys_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='`sys_login_info`';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='`sys_login_info`';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +86,7 @@ CREATE TABLE `sys_login_info` (
 
 LOCK TABLES `sys_login_info` WRITE;
 /*!40000 ALTER TABLE `sys_login_info` DISABLE KEYS */;
-INSERT INTO `sys_login_info` VALUES ('lanshiqin','adminc','1',1,1,'2017-09-03','16:00','admin','2017-09-03','16:00','admin');
+INSERT INTO `sys_login_info` VALUES ('lanshiqin','adminc','1',1,1,'2017-09-03','16:00','admin','2017-09-03','16:00','admin'),('lanshiqin2','adminc','1',20,19,'','','','','',''),('lanshiqin3','adminc','1',30,29,'','','','','','');
 /*!40000 ALTER TABLE `sys_login_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +109,7 @@ CREATE TABLE `sys_permission_info` (
   `update_user` varchar(50) NOT NULL DEFAULT '' COMMENT '更新用户',
   PRIMARY KEY (`sys_id`),
   UNIQUE KEY `sys_id` (`sys_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='`sys_permission_info`';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='`sys_permission_info`';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +141,7 @@ CREATE TABLE `sys_role_info` (
   `update_user` varchar(50) NOT NULL DEFAULT '' COMMENT '更新用户',
   PRIMARY KEY (`sys_id`),
   UNIQUE KEY `sys_id` (`sys_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='`sys_role_info`';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='`sys_role_info`';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +150,7 @@ CREATE TABLE `sys_role_info` (
 
 LOCK TABLES `sys_role_info` WRITE;
 /*!40000 ALTER TABLE `sys_role_info` DISABLE KEYS */;
-INSERT INTO `sys_role_info` VALUES ('管理员','admin',1,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员');
+INSERT INTO `sys_role_info` VALUES ('管理员','admin',1,'2017-09-04','20:00','管理员','2017-09-04','20:00','管理员'),('编辑员','editor',2,'','','','','',''),('审核者','auditor',4,'','','','','','');
 /*!40000 ALTER TABLE `sys_role_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +206,7 @@ CREATE TABLE `sys_user_info` (
   `update_user` varchar(50) NOT NULL DEFAULT '' COMMENT '更新用户',
   PRIMARY KEY (`sys_id`),
   UNIQUE KEY `sys_id` (`sys_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='`sys_user_info`';
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='`sys_user_info`';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +215,7 @@ CREATE TABLE `sys_user_info` (
 
 LOCK TABLES `sys_user_info` WRITE;
 /*!40000 ALTER TABLE `sys_user_info` DISABLE KEYS */;
-INSERT INTO `sys_user_info` VALUES ('蓝士钦','男','1995-01-29',1,'2017-09-03','16:00','admin','2017-09-03','16:00','admin');
+INSERT INTO `sys_user_info` VALUES ('蓝士钦','男','2017年09月12日',1,'2017-09-03','16:00','admin','2017-09-03','16:00','admin'),('蓝士钦2','男','2017年09月13日',20,'','','','','',''),('蓝士钦3','男','2017年09月10日',30,'','','','','','');
 /*!40000 ALTER TABLE `sys_user_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,4 +260,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-07 23:26:12
+-- Dump completed on 2017-09-13 22:26:34
