@@ -132,5 +132,21 @@
         </set>
         WHERE sys_id = #{pojo.sysId}
     </update>
+
+    <select id="search" resultMap="AllColumnMap" parameterType="com.lanshiqin.cmsboot.core.filter.DepInfoFilter">
+        SELECT * FROM sys_dep_info
+        <where>
+            <if test="depInfoFilter.name!=null">
+                sys_dep_info.name LIKE CONCAT('%','${depInfoFilter.name}','%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteIn" parameterType="String">
+        DELETE FROM  sys_dep_info WHERE sys_dep_info.sys_id IN
+        <foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>
 

@@ -1,5 +1,6 @@
 package com.lanshiqin.cmsboot.core.service;
 
+import com.lanshiqin.cmsboot.core.filter.DepInfoFilter;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -26,5 +27,13 @@ public class SysDepInfoService{
 
     public int update(SysDepInfo pojo){
         return sysDepInfoDao.update(pojo);
+    }
+
+    public List<SysDepInfo> search(DepInfoFilter depInfoFilter) {
+        return sysDepInfoDao.search(depInfoFilter);
+    }
+
+    public int deleteIn(List<String> idList) {
+        return sysDepInfoDao.deleteIn(idList);
     }
 }
