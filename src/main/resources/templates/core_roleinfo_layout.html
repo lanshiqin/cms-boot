@@ -25,7 +25,7 @@
     <!--删除角色对话框 start-->
     <Modal
             v-model="delModal"
-            title="删除用户"
+            title="删除角色"
             @on-ok="delRoleinfo"
             @on-cancel="cancel">
         <p>确定要删除吗？</p>
@@ -108,7 +108,7 @@
         </div>
 
     </Modal>
-    <!--新增用户对话框 end-->
+    <!--新增角色对话框 end-->
 
 
     <div style="top: 50px;left: 0; right: 0; position: absolute;">
@@ -148,15 +148,15 @@
                         key: 'type'
                     }
                 ],
-                roleInfoListData: [],// 用户信息列表项数据
-                delRoleinfoList: [], // 待删除的用户集合
+                roleInfoListData: [],// 角色信息列表项数据
+                delRoleinfoList: [], // 待删除的角色集合
                 infoModal: false,    // 查询对话框（false为不显示）
                 addModal: false,    // 新增对话框（false为不显示）
                 editModal: false,   // 编辑对话框（false为不显示）
                 noPerEditModal: false,  // 不允许编辑（true时提示不允许编辑）
                 isEdit: false,      // 是否允许编辑（勾选多个时为false，不允许编辑）
                 delModal: false,    // 删除对话框（false为不显示）
-                roleinfo: {         // 角色信息（新增用户时存储的数据）
+                roleinfo: {         // 角色信息（新增角色时存储的数据）
                     sysId: '',
                     name: '',
                     type: '',
@@ -270,7 +270,7 @@
             dateChange(data) {
                 this.roleinfo.birthday = data;
             },
-            clearRoleinfo() {    // 清空对话框的用户信息
+            clearRoleinfo() {    // 清空对话框的角色信息
                 this.roleinfo.sysId = '';
                 this.roleinfo.name = '';
                 this.roleinfo.type = '';
